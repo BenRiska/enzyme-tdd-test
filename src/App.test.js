@@ -1,9 +1,12 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { render } from "@testing-library/react";
+import App from "./App";
+import { shallow } from "enzyme";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("should contain bye", () => {
+  const wrapper = shallow(<App />);
+  const footer = wrapper.find("footer");
+  const result = footer.text();
+
+  expect(result).toBe("bye");
 });
